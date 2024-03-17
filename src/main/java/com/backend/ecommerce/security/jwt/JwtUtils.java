@@ -3,6 +3,7 @@ package com.backend.ecommerce.security.jwt;
 import java.security.Key;
 import java.util.Date;
 
+import com.backend.ecommerce.models.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -28,7 +29,7 @@ public class JwtUtils {
 
     public String generateJwtToken(Authentication authentication) {
 
-        AppUserImpl userPrincipal = (AppUserImpl) authentication.getPrincipal();
+        User userPrincipal = (User) authentication.getPrincipal();
 
         return Jwts.builder()
                 .setSubject((userPrincipal.getUsername()))
